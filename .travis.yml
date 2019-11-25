@@ -4,7 +4,7 @@ services:
 before_install:
  - docker build -t sujoydipta/react-test -f ./client/Dockerfile.dev ./client
  script:
-    - docker run -e CI=true sujoydipta/react-test npm run test
+ - docker run -e CI=true sujoydipta/react-test npm run test
 after_success:
  - docker build -t sujoydipta/multi-client ./client
  - docker build -t sujoydipta/multi-server ./server
