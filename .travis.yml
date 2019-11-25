@@ -6,14 +6,14 @@ before_install:
  script:
     - docker run -e CI=true sujoydipta/react-test npm run test
 after_success:
-  - docker build -t sujoydipta/multi-client ./client
-  - docker build -t sujoydipta/multi-server ./server
-  - docker build -t sujoydipta/multi-worker ./worker
-  - docker build -t sujoydipta/multi-nginx ./nginx
+ - docker build -t sujoydipta/multi-client ./client
+ - docker build -t sujoydipta/multi-server ./server
+ - docker build -t sujoydipta/multi-worker ./worker
+ - docker build -t sujoydipta/multi-nginx ./nginx
   
-  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push sujoydipta/multi-client
-  - docker push sujoydipta/multi-server
-  - docker push sujoydipta/multi-worker
-  - docker push sujoydipta/multi-nginx
+ echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+ - docker push sujoydipta/multi-client
+ - docker push sujoydipta/multi-server
+ - docker push sujoydipta/multi-worker
+ - docker push sujoydipta/multi-nginx
   
