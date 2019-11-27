@@ -20,4 +20,20 @@ after_success:
  - docker push sujoydipta/multi-server
  - docker push sujoydipta/multi-worker
  - docker push sujoydipta/multi-nginx
+ 
+deploy:
+  edge: true  
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket-name: elasticbeanstalk-us-east-1-078102778856
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+  
+ 
   
